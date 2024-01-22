@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password saver</title>
+</head>
+<body>
+<h2>User Log in</h2>
+
+<form action="/processForm" method="post">
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="password">Enter Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+<p>Forgot your password? <a href="/forgotPassword">Click here</a> to recover it.</p>
+
+<div id="loggedInUsers">
+    <label for="loggedUsers">Logged-in Users:</label>
+    <textarea id="loggedUsers" rows="4" cols="50" readonly>
+
+        <th:block th:each="user : ${users}" th:text="${user.name} + '&#10;'"></th:block>
+    </textarea>
+</div>
+
+</body>
+</html>
