@@ -1,8 +1,5 @@
 package com.example.PasswordSaver;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "user_table")
 public class UserEntity {
@@ -12,6 +9,10 @@ public class UserEntity {
 
     private String name;
     private String password;
+
+
+    @Column(name = "username")
+    private String username;
 
     public UserEntity() {
         // Default constructor required by JPA
@@ -24,6 +25,10 @@ public class UserEntity {
 
     public String getName() {
         return name;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public void setName(String name) {

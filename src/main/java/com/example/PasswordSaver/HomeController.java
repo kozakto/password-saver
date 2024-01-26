@@ -12,6 +12,7 @@ import java.util.Set;
 public class HomeController {
 
     private final UserRepository userRepository;
+    @Autowired
     private final UserService userService;
 
     @Autowired
@@ -49,6 +50,19 @@ public class HomeController {
         userService.saveUser(newUser);
 
         return "success";// Redirect to the appropriate endpoint
+    }
+
+    @GetMapping("/getUserPassword")
+    public String getPasswordByName(@RequestParam String name) {
+        // Find the user by name
+        UserEntity user = userService.findUserByName(name);
+
+        if (user != null) {
+            // Return the user's password
+            return "passwordResult";
+        } else {
+            return "User not found";
+        }
     }
 
 }

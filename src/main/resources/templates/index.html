@@ -6,7 +6,7 @@
     <title>Password saver</title>
 </head>
 <body>
-<h2>User Log in</h2>
+<h2>Store your credentials</h2>
 
 <form action="/processForm" method="post">
     <label for="name">Enter Name:</label>
@@ -23,8 +23,9 @@
 <div id="loggedInUsers">
     <label for="loggedUsers">Logged-in Users:</label>
     <textarea id="loggedUsers" rows="4" cols="50" readonly>
-
-        <th:block th:each="user : ${users}" th:text="${user.name} + '&#10;'"></th:block>
+        <th:block th:each="user : ${users}" th:sort="${user.id}">
+            <th:block th:text="${user.name + '\n'}"></th:block>
+        </th:block>
     </textarea>
 </div>
 
