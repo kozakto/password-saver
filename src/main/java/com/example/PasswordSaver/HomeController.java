@@ -53,15 +53,17 @@ public class HomeController {
     }
 
     @GetMapping("/getUserPassword")
-    public String getPasswordByName(@RequestParam String name) {
+    public String getPasswordByName(@RequestParam String name, Model model) {
         // Find the user by name
         UserEntity user = userService.findUserByName(name);
 
         if (user != null) {
-            // Return the user's password
-            return "passwordResult";
+            // Display the user's password
+            model.addAttribute("userPassword", user.getPassword());
+            return "passwordRetriever"; // Display the result in the same page
         } else {
-            return "User not found";
+            // User not found, handle accordingly
+            return "redirect:/forgotPassword"; // You can redirect to the forgot password page
         }
     }
 
