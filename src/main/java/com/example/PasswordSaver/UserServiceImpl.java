@@ -20,8 +20,6 @@ public class UserServiceImpl implements UserService {
         List<UserEntity> users = userRepository.findByName(name);
 
         if (!users.isEmpty()) {
-            // handle the case where there are multiple users with the same name
-            // you may want to return the first user or handle it differently
             return users.get(0);
         } else {
             return null; // user not found
@@ -32,5 +30,5 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserEntity user) {
         userRepository.save(user);
     }
-    // Other methods can be added here
+
 }

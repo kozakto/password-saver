@@ -31,7 +31,7 @@ public class HomeController {
     public String home(Model model) {
         Set<UserEntity> users = new HashSet<>(userRepository.findAll());
         model.addAttribute("users", users);
-        return "index"; // Assuming you have a Thymeleaf template named "index.html"
+        return "index";
     }
 
     @GetMapping("/forgotPassword")
@@ -41,7 +41,7 @@ public class HomeController {
 
     @PostMapping("/processForm")
     public String processForm(@RequestParam String name, @RequestParam String password) {
-        // Create a new user entity
+        // A new user entity
         UserEntity newUser = new UserEntity();
         newUser.setName(name);
         newUser.setPassword(password);
@@ -49,7 +49,7 @@ public class HomeController {
         // Save the user to the database
         userService.saveUser(newUser);
 
-        return "success";// Redirect to the appropriate endpoint
+        return "success";
     }
 
     @GetMapping("/getUserPassword")
@@ -62,8 +62,8 @@ public class HomeController {
             model.addAttribute("userPassword", user.getPassword());
             return "passwordRetriever"; // Display the result in the same page
         } else {
-            // User not found, handle accordingly
-            return "redirect:/forgotPassword"; // You can redirect to the forgot password page
+            // User not found
+            return "redirect:/forgotPassword";
         }
     }
 

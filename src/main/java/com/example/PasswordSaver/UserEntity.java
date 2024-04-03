@@ -15,7 +15,6 @@ public class UserEntity {
     private String username;
 
     public UserEntity() {
-        // Default constructor required by JPA
     }
 
     public UserEntity(String name, String password) {
@@ -50,5 +49,4 @@ public class UserEntity {
     public void setId(Long id) {
         this.id = id;
     }
-// Constructors, getters, and setters
 }
